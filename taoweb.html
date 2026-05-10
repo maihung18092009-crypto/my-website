@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SNEAKER CITY - Trang Chủ</title>
+    <link rel="stylesheet" href="../accets/css/taoweb.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="main-header">
+      <div class="container header-content">
+        <div class="nav-left">
+          <div class="logo">
+            SNEAKER <span class="highlight-color">CITY</span>
+          </div>
+          <nav class="main-nav">
+            <a href="../pages/taoweb.html">Home</a>
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+            <a href="#">Kids</a>
+            <a href="#">Sale</a>
+          </nav>
+        </div>
+
+        <div class="nav-right user-actions">
+          <input
+            id="searchBox"
+            type="text"
+            placeholder="Tìm kiếm sản phẩm..."
+          />
+          <button
+            id="searchBtn"
+            class="icon-btn search-btn"
+            aria-label="Search"
+          >
+            🔍
+          </button>
+          <button id="cartBtn" class="icon-btn cart-btn" aria-label="Cart">
+            🛒
+          </button>
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const cartBtn = document.getElementById("cartBtn");
+              if (cartBtn) {
+                cartBtn.addEventListener("click", () => {
+                  window.location.href = "../pages/cart.html";
+                });
+              }
+            });
+          </script>
+          <button class="icon-btn account-btn" aria-label="Account">
+            <a href="../pages/login.html">👤</a>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <main>
+      <section class="hero-banner">
+        <div class="container banner-content">
+          <div class="text-block">
+            <p class="pre-heading">LIMITED TIME OFFER</p>
+            <h1>UP TO <span class="discount-percent">60%</span> OFF</h1>
+            <p class="subtitle">ON YOUR NEXT FAVORITE PAIR</p>
+            <a href="../pages/shop.html" class="shop-now-btn">SHOP NOW</a>
+          </div>
+          <img
+            src="https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_t.png"
+            alt="Featured Sneaker"
+            class="hero-image"
+          />
+        </div>
+      </section>
+
+      <!-- Flash Sale Section -->
+      <section class="main-sale-section">
+        <div class="container">
+          <h2 class="section-title">
+            TODAY'S FLASH SALES <span class="sale-badge">99%</span>
+          </h2>
+          <div class="product-grid" id="product-list">
+            <!-- Sản phẩm sẽ được render từ Firestore -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container footer-content">
+        <div class="footer-about">
+          <h3 class="highlight-color">About Size</h3>
+          <p>
+            Step into confidence with these luxurious, top-tier shoes that
+            redefine elegance.
+          </p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <h4>COMPANY</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>SHOPPING</h4>
+            <ul>
+              <li><a href="#">Latest Drops</a></li>
+              <li><a href="#">Women's</a></li>
+              <li><a href="#">Gift Cards</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>ACCOUNT</h4>
+            <ul>
+              <li><a href="#">Login / Register</a></li>
+              <li><a href="#">Edit Profile</a></li>
+              <li><a href="#">Orders</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <p>
+            © 2025 SNEAKER CITY. All rights reserved. | <a href="#">Terms</a> |
+            <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div id="authModal" class="modal">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3 class="highlight-color">LOGIN</h3>
+        </div>
+        <form class="auth-form">
+          <input type="text" placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit" class="primary-btn">LOGIN</button>
+          <p class="modal-switch">
+            Chưa có tài khoản? <a href="#">Đăng ký ngay!</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="../accets/js/firebase.js"></script>
+    <script type="module" src="../accets/js/product.js"></script>
+    <script type="module">
+      import { renderProducts } from "../accets/js/product.js";
+      // Render toàn bộ sản phẩm khi load trang
+      renderProducts("product-list");
+    </script>
+  </body>
+</html>
